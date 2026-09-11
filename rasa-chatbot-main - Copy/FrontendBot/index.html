@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Chord Gitar</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="chat-container">
+
+        <div class="chat-header">
+            Chat Chord Gitar
+        </div>
+
+        <div id="chatBox" class="chat-box">
+
+            <div class="message bot-message">
+                Halo! Ada yang bisa saya bantu terkait kunci atau chord gitar?
+            </div>
+
+        </div>
+
+        <div class="chat-input">
+
+            <input
+                type="text"
+                id="userInput"
+                placeholder="Ketik pesan..."
+                onkeypress="handleKey(event)"
+            >
+
+            <button onclick="sendMessage()">
+                Kirim
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const rasaServer =
+            "http://localhost:5005/webhooks/rest/webhook";
+
+
+        /* =========================
+           KIRIM PESAN KE RASA
+        ========================= */
+
+        async function sendMessage() {
+
+            const inputField =
+                document.getElementById("userInput");
+
+            const messageText =
+                inputField.value.trim();
+
+            if (!messageText) {
+                return;
+            }
+
+
+            /* Tampilkan pesan user */
+
+            appendMessage(
+                messageText,
+                "user-message"
+            );
+
+
+            inputField.value = "";
+
+
+            try {
+
+                const response = await fetch(
+                    rasaServer,
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            sender: "user",
+                            message: messageText
+                        })
+                    }
+                );
+
+
+                const data =
+                    await response.json();
+
+
+                if (data.length === 0) {
+
+                    appendMessage(
+                        "Maaf, bot tidak merespons.",
+                        "bot-message"
+                    );
+
+                    return;
+                }
+
+
+                data.forEach(item => {
+
+                    if (item.text) {
+
+                        appendMessage(
+                            item.text,
+                            "bot-message"
+                        );
+
+                    }
+
+                });
+
+
+            } catch (error) {
+
+                appendMessage(
+                    "Error: Gagal terhubung ke server Rasa.",
+                    "bot-message"
+                );
+
+            }
+
+        }
+
+
+        /* =========================
+           MENAMPILKAN PESAN
+        ========================= */
+
+        function appendMessage(text, className) {
+
+            const chatBox =
+                document.getElementById("chatBox");
+
+
+            /*
+             * Cek apakah response berupa
+             * ASCII/code block.
+             */
+
+            const isCodeBlock =
+                text.includes("```");
+
+
+            if (isCodeBlock) {
+
+                const pre =
+                    document.createElement("pre");
+
+
+                pre.className =
+                    "ascii-message";
+
+
+                /*
+                 * Hilangkan ``` dari response Rasa
+                 */
+
+                let asciiText =
+                    text
+                        .replace(
+                            /^```[a-zA-Z0-9]*\s*/,
+                            ""
+                        )
+                        .replace(
+                            /\s*```$/,
+                            ""
+                        );
+
+
+                /*
+                 * textContent menjaga
+                 * spasi dan karakter ASCII.
+                 */
+
+                pre.textContent =
+                    asciiText;
+
+
+                chatBox.appendChild(pre);
+
+
+                /*
+                 * Tunggu sampai browser
+                 * selesai membuat elemen,
+                 * lalu sesuaikan ukuran ASCII.
+                 */
+
+                requestAnimationFrame(() => {
+
+                    fitAsciiToContainer(pre);
+
+                });
+
+
+            } else {
+
+                const msgDiv =
+                    document.createElement("div");
+
+
+                msgDiv.className =
+                    `message ${className}`;
+
+
+                msgDiv.innerText =
+                    text;
+
+
+                chatBox.appendChild(msgDiv);
+
+            }
+
+
+            /*
+             * Scroll chat ke pesan terbaru.
+             */
+
+            chatBox.scrollTop =
+                chatBox.scrollHeight;
+
+        }
+
+
+        /* =========================
+           MENYESUAIKAN UKURAN ASCII
+        ========================= */
+
+        function fitAsciiToContainer(element) {
+
+            /*
+             * Ukuran awal ASCII.
+             */
+
+            let fontSize = 20;
+
+
+            element.style.fontSize =
+                fontSize + "px";
+
+
+            /*
+             * Jika ASCII terlalu lebar,
+             * perkecil secara bertahap.
+             */
+
+            while (
+                element.scrollWidth > element.clientWidth &&
+                fontSize > 8
+            ) {
+
+                fontSize -= 1;
+
+
+                element.style.fontSize =
+                    fontSize + "px";
+
+            }
+
+        }
+
+
+        /* =========================
+           ENTER UNTUK MENGIRIM
+        ========================= */
+
+        function handleKey(event) {
+
+            if (event.key === "Enter") {
+
+                sendMessage();
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

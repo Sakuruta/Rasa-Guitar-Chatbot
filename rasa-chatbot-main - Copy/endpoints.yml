@@ -1,0 +1,10 @@
+
+
+# Untuk menghubungkan Rasa Core ke custom actions
+action_endpoint:
+  url: "http://localhost:5055/webhook"
+
+# Untuk menyimpan conversation history secara lokal (default)
+tracker_store:
+  type: "sqlite"
+  path: "rasa.db"

@@ -1,0 +1,122 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - halo
+    - hai
+    - hi
+    - selamat pagi
+    - selamat siang
+    - selamat sore
+    - selamat malam
+    - assalamualaikum
+    - apa kabar
+    - heyo
+    - yo
+    - permisi
+
+- intent: goodbye
+  examples: |
+    - dadah
+    - sampai jumpa
+    - bye
+    - selamat tinggal
+    - cabut dulu ya
+    - pamit undur diri
+    - tidur dulu
+    - hati-hati di jalan
+    - see you
+    - oke makasih ya
+
+- intent: affirm
+  examples: |
+    - ya
+    - iya
+    - benar
+    - tentu saja
+    - betul
+    - oke
+    - sip
+    - setuju
+    - memang begitu
+    - ayo
+
+- intent: deny
+  examples: |
+    - tidak
+    - bukan
+    - nggak
+    - gak
+    - jangan
+    - salah
+    - kurang setuju
+    - bukan itu
+    - tolak
+    - skip
+
+- intent: mood_great
+  examples: |
+    - luar biasa
+    - senang sekali
+    - hari ini menyenangkan
+    - perasaan enak banget
+    - bahagia
+    - mantap jiwa
+    - sangat bagus
+    - sempurna
+    - lagi happy banget
+    - dunia terasa indah
+
+- intent: mood_unhappy
+  examples: |
+    - sedih
+    - kecewa
+    - hari ini buruk
+    - tidak enak badan
+    - pusing
+    - stres banget
+    - lelah
+    - galau
+    - nyesek
+    - rasanya pengen nangis
+    - kurang semangat
+
+- intent: bot_challenge
+  examples: |
+    - kamu robot ya?
+    - apakah kamu manusia?
+    - aku ngobrol sama bot kan?
+    - ini beneran orang atau mesin?
+    - kamu AI?
+    - buatan siapa kamu?
+
+- intent: ask_bot_name
+  examples: |
+    - siapa namamu?
+    - kamu namanya siapa?
+    - boleh tahu nama kamu?
+    - panggil kamu apa?
+    - namamu siapa sih?
+    - kenalan dong, nama kamu siapa?
+
+- intent: cari_chord
+  examples: |
+    - bagaimana posisi chord [C](nama_kunci)
+    - cara main kunci [G](nama_kunci)
+    - tunjukkan diagram [Am](nama_kunci)
+    - posisi jari untuk [Bm](nama_kunci)
+    - [D](nama_kunci) dong
+    - gimana cara pegang [Em](nama_kunci)
+    - kasih tau kunci [F](nama_kunci)
+    - mau belajar [A](nama_kunci)
+    - gambar fretboard [E](nama_kunci)
+    - [Dm](nama_kunci) taruh jarinya dimana
+    - notasi [C7](nama_kunci)
+    - bentuk kunci [G7](nama_kunci)
+    - [A7](nama_kunci) seperti apa
+    - [E7](nama_kunci) posisinya
+    - [D7](nama_kunci) gimana
+    - [B](nama_kunci) mayor
+    - [F#m](nama_kunci) susah banget
+    - chord [Cmaj7](nama_kunci)
