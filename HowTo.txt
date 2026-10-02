@@ -1,0 +1,14 @@
+-Tata
+Rasa train # For make new models
+Rasa shell # to quickly try the models
+Rasa run actions # to run the custom action
+
+
+Structure :
+action for set special action
+result u can see the result for the train model
+data esensial for making rule, var to the bot such as :
+nlu to know the input
+rules to know the input and what to respond
+story to train ai how the convo going on
+domain set sesion config, and respond

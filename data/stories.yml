@@ -1,0 +1,58 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: mood_great
+    - action: utter_happy
+
+- story: sad path 1
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: mood_unhappy
+    - action: utter_cheer_up
+    - action: utter_did_that_help
+    - intent: affirm
+    - action: utter_happy
+
+- story: sad path 2
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: mood_unhappy
+    - action: utter_cheer_up
+    - action: utter_did_that_help
+    - intent: deny
+    - action: utter_goodbye
+
+- story: ask bot name
+  steps:
+    - intent: ask_bot_name
+    - action: utter_ask_bot_name
+
+
+- story: User mencari multiple chords
+  steps:
+    - intent: cari_chord
+      entities:
+        - nama_kunci: "C"
+    - action: action_beri_info_kunci
+    - intent: cari_chord
+      entities:
+        - nama_kunci: "G"
+    - action: action_beri_info_kunci
+
+- story: User tanya chord lalu memperjelas
+  steps:
+    - intent: cari_chord
+      entities:
+        - nama_kunci: "D"
+    - action: action_beri_info_kunci
+    - intent: cari_chord
+      entities:
+        - nama_kunci: "Bm"
+    - action: action_beri_info_kunci
