@@ -6,8 +6,8 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Salin seluruh isi folder projek (termasuk folder models/ yang sudah di-train)
+# Salin seluruh isi folder projek
 COPY . .
 
-# Jalankan Rasa menggunakan port dinamis dari Render dan batasi pekerja agar hemat RAM
-CMD rasa run --enable-api --cors "*" --port $PORT --workers 1
+# Gunakan exec form agar variabel $PORT terbaca dengan benar
+CMD ["sh", "-c", "rasa run --enable-api --cors '*' -p ${PORT:-5005}"]
