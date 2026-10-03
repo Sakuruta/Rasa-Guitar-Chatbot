@@ -10,4 +10,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Jalankan Rasa dengan mendengarkan port dari lingkungan ($PORT)
-CMD ["sh", "-c", "rasa run --enable-api --cors '*' --port $PORT"]
+CMD ["rasa", "run", "--enable-api", "--cors", "*", "--port", "10000"]
