@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot Chord Gitar</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,30 +16,24 @@
         </div>
 
         <div id="chatBox" class="chat-box">
-
             <div class="message bot-message">
                 Halo! Ada yang bisa saya bantu terkait kunci atau chord gitar?
             </div>
-
         </div>
 
         <div class="chat-input">
-
             <input
                 type="text"
                 id="userInput"
                 placeholder="Ketik pesan..."
                 onkeypress="handleKey(event)"
             >
-
             <button onclick="sendMessage()">
                 Kirim
             </button>
-
         </div>
 
     </div>
-
 
     <script>
 
@@ -64,17 +57,13 @@
                 return;
             }
 
-
             /* Tampilkan pesan user */
-
             appendMessage(
                 messageText,
                 "user-message"
             );
 
-
             inputField.value = "";
-
 
             try {
 
@@ -82,12 +71,10 @@
                     rasaServer,
                     {
                         method: "POST",
-
                         headers: {
                             "Content-Type":
                                 "application/json"
                         },
-
                         body: JSON.stringify({
                             sender: "user",
                             message: messageText
@@ -95,45 +82,31 @@
                     }
                 );
 
-
-                const data =
-                    await response.json();
-
+                const data = await response.json();
 
                 if (data.length === 0) {
-
                     appendMessage(
                         "Maaf, bot tidak merespons.",
                         "bot-message"
                     );
-
                     return;
                 }
 
-
                 data.forEach(item => {
-
                     if (item.text) {
-
                         appendMessage(
                             item.text,
                             "bot-message"
                         );
-
                     }
-
                 });
 
-
             } catch (error) {
-
                 appendMessage(
                     "Error: Gagal terhubung ke server Rasa.",
                     "bot-message"
                 );
-
             }
-
         }
 
 
@@ -143,134 +116,52 @@
 
         function appendMessage(text, className) {
 
-            const chatBox =
-                document.getElementById("chatBox");
-
+            const chatBox = document.getElementById("chatBox");
 
             /*
              * Cek apakah response berupa
              * ASCII/code block.
              */
-
-            const isCodeBlock =
-                text.includes("```");
+            const isCodeBlock = text.includes("```");
 
 
             if (isCodeBlock) {
 
-                const pre =
-                    document.createElement("pre");
-
-
-                pre.className =
-                    "ascii-message";
-
+                const pre = document.createElement("pre");
+                pre.className = "ascii-message";
 
                 /*
                  * Hilangkan ``` dari response Rasa
                  */
-
-                let asciiText =
-                    text
-                        .replace(
-                            /^```[a-zA-Z0-9]*\s*/,
-                            ""
-                        )
-                        .replace(
-                            /\s*```$/,
-                            ""
-                        );
-
+                let asciiText = text
+                    .replace(/^```[a-zA-Z0-9]*\s*/, "")
+                    .replace(/\s*```$/, "");
 
                 /*
-                 * textContent menjaga
-                 * spasi dan karakter ASCII.
+                 * textContent menjaga spasi dan karakter ASCII.
                  */
-
-                pre.textContent =
-                    asciiText;
-
+                pre.textContent = asciiText;
 
                 chatBox.appendChild(pre);
 
-
-                /*
-                 * Tunggu sampai browser
-                 * selesai membuat elemen,
-                 * lalu sesuaikan ukuran ASCII.
+                /* 
+                 * CATATAN: Fungsi fitAsciiToContainer telah dihapus di sini 
+                 * agar CSS overflow-x: auto bisa berfungsi untuk scroll horizontal.
                  */
-
-                requestAnimationFrame(() => {
-
-                    fitAsciiToContainer(pre);
-
-                });
-
 
             } else {
 
-                const msgDiv =
-                    document.createElement("div");
-
-
-                msgDiv.className =
-                    `message ${className}`;
-
-
-                msgDiv.innerText =
-                    text;
-
+                const msgDiv = document.createElement("div");
+                msgDiv.className = `message ${className}`;
+                msgDiv.innerText = text;
 
                 chatBox.appendChild(msgDiv);
-
             }
-
 
             /*
              * Scroll chat ke pesan terbaru.
              */
-
-            chatBox.scrollTop =
-                chatBox.scrollHeight;
-
-        }
-
-
-        /* =========================
-           MENYESUAIKAN UKURAN ASCII
-        ========================= */
-
-        function fitAsciiToContainer(element) {
-
-            /*
-             * Ukuran awal ASCII.
-             */
-
-            let fontSize = 20;
-
-
-            element.style.fontSize =
-                fontSize + "px";
-
-
-            /*
-             * Jika ASCII terlalu lebar,
-             * perkecil secara bertahap.
-             */
-
-            while (
-                element.scrollWidth > element.clientWidth &&
-                fontSize > 8
-            ) {
-
-                fontSize -= 1;
-
-
-                element.style.fontSize =
-                    fontSize + "px";
-
-            }
-
+            chatBox.scrollTop = chatBox.scrollHeight;
         }
 
 
@@ -279,13 +170,9 @@
         ========================= */
 
         function handleKey(event) {
-
             if (event.key === "Enter") {
-
                 sendMessage();
-
             }
-
         }
 
     </script>
