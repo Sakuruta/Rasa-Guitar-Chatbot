@@ -1,4 +1,4 @@
-```markdown
+
 # Rasa Guitar Chatbot (v3.5.0)
 
 [![Rasa Open Source](https://img.shields.io/badge/Rasa-3.5.0-purple.svg)](https://rasa.com/)
@@ -124,7 +124,3 @@ Rasa-Bot/
 ## 📜 License
 
 This project is built using Rasa Open Source v3.5.0 and is licensed under the [Apache License 2.0](https://opensource.org/licenses/Apache-2.0).
-
-```
-
-```
