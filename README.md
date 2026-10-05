@@ -60,21 +60,31 @@ rasa shell
 
 ## 📂 Struktur Folder Proyek
 
-.
+
 ├── actions/
-│   └── actions.py        # Logika custom action (Python)
+
+│   └── actions.py          # Logika custom action (Python)
 
 ├── data/
-│   ├── nlu.yml           # Data latihan intent & entity
-│   ├── rules.yml         # Aturan percakapan tetap
-│   └── stories.yml       # Alur dialog percakapan (training stories)
 
-├── config.yml            # Konfigurasi NLU pipeline & policy
-├── domain.yml            # Definisi intent, entities, slots, & responses
-├── credentials.yml       # Konfigurasi channel / integrasi
-├── endpoints.yml         # Konfigurasi endpoint (action server, storage)
-├── Dockerfile            # Config Docker (Eksperimental / Belum diuji penuh)
-└── README.md             # Dokumentasi proyek
+│   ├── nlu.yml             # Data latihan intent & entity
+
+│   ├── rules.yml           # Aturan percakapan tetap
+
+│   └── stories.yml         # Alur dialog percakapan (training stories)
+
+
+├── config.yml              # Konfigurasi NLU pipeline & policy
+
+├── domain.yml              # Definisi intent, entities, slots, & responses
+
+├── credentials.yml         # Konfigurasi channel / integrasi
+
+├── endpoints.yml           # Konfigurasi endpoint (action server, storage)
+
+├── Dockerfile              # Config Docker (Eksperimental / Belum diuji penuh)
+
+└── README.md               # Dokumentasi proyek
 
 Catatan Penting: File konfigurasi seperti Dockerfile di repositori ini disediakan sebagai persiapan deployment opsional dan saat ini masih dalam tahap eksperimen (belum diuji penuh).
 
