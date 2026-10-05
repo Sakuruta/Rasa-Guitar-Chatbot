@@ -61,31 +61,24 @@ rasa shell
 ## 📂 Struktur Folder Proyek
 
 
+Rasa-Bot/
 ├── actions/
-
-│   └── actions.py          # Logika custom action (Python)
-
+│   └── actions.py              # Custom action logic (Python)
 ├── data/
-
-│   ├── nlu.yml             # Data latihan intent & entity
-
-│   ├── rules.yml           # Aturan percakapan tetap
-
-│   └── stories.yml         # Alur dialog percakapan (training stories)
-
-
-├── config.yml              # Konfigurasi NLU pipeline & policy
-
-├── domain.yml              # Definisi intent, entities, slots, & responses
-
-├── credentials.yml         # Konfigurasi channel / integrasi
-
-├── endpoints.yml           # Konfigurasi endpoint (action server, storage)
-
-├── Dockerfile              # Config Docker (Eksperimental / Belum diuji penuh)
-
-└── README.md               # Dokumentasi proyek
-
+│   ├── nlu.yml                 # NLU training data (intents & entities)
+│   ├── rules.yml               # Fixed rule-based dialogue paths
+│   └── stories.yml             # Dialogue training stories
+├── FrontendBot/                # Web / Chat UI assets
+├── results/                    # Model evaluation reports & confusion matrices
+├── config.yml                  # NLU pipeline & policy configuration
+├── domain.yml                  # Intent, entity, slot, and response definitions
+├── credentials.yml             # Channel / integration settings
+├── endpoints.yml               # Endpoint configurations (action server, trackers)
+├── requirements.txt            # Python dependencies
+├── runtime.txt                 # Target Python runtime environment
+├── Dockerfile                  # Container configuration (Experimental)
+├── Procfile                    # Deployment configuration (Experimental)
+└── README.md                   # Project documentation
 Catatan Penting: File konfigurasi seperti Dockerfile di repositori ini disediakan sebagai persiapan deployment opsional dan saat ini masih dalam tahap eksperimen (belum diuji penuh).
 
 ---
