@@ -54,7 +54,8 @@ rasa shell
 
 ---
 
-<img width="1856" height="890" alt="image" src="https://github.com/user-attachments/assets/505d1d44-e0a8-45d9-bed5-0c8f769d562b" />
+## 📊 Model Evaluation
+![DIETClassifier Confusion Matrix](results/DIETClassifier_confusion_matrix.png)
 
 
 ## 📂 Struktur Folder Proyek
