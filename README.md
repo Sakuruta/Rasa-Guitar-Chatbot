@@ -18,7 +18,7 @@ I am experimenting with Rasa 3.5.0 to build a simple bot for asking about guitar
 
 ## 🛠️ Tech Stack & Prerequisites
 
-- **Python**: v3.8 or v3.9 *(Virtual Environment strongly recommended)*
+- **Python**: v3.10.x *(Virtual Environment strongly recommended)*
 - **Rasa Open Source**: v3.5.0
 - **Rasa SDK**: v3.5.x
 
