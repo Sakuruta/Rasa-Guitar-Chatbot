@@ -3,6 +3,7 @@
 [![Rasa Open Source](https://img.shields.io/badge/Rasa-3.5.0-purple.svg)](https://rasa.com/)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
+Saya mencoba Rasa 3.5.0 membuat bot simple untuk bertanya tentang chord gitar
 Bot interaktif berbasis teks yang dibangun menggunakan framework **Rasa Open Source (v3.5.0)** untuk menangani pemrosesan bahasa alami (NLU) dan manajemen dialog secara lokal.
 
 ---
@@ -10,7 +11,7 @@ Bot interaktif berbasis teks yang dibangun menggunakan framework **Rasa Open Sou
 ## 📌 Fitur Utama
 
 - **Intent Recognition & Entity Extraction**: Mampu memahami maksud pesan pengguna dan mengambil variabel data penting.
-- **Custom Actions**: Logika kustom dan integrasi eksternal berbasis Python SDK (`rasa-sdk`).
+- **Custom Actions**: Logika kustom dan integrasi eksternal berbasis Python SDK (`rasa-sdk`). digunakan untuk mengambil chord ascii
 - **Local Deployment**: Berjalan sepenuhnya di lingkungan lokal tanpa tergantung pada API luar berbayar.
 
 ---
