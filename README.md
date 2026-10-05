@@ -1,4 +1,4 @@
-# Rasa Chatbot (v3.5.0)
+# Rasa Guitar Chatbot (v3.5.0)
 
 [![Rasa Open Source](https://img.shields.io/badge/Rasa-3.5.0-purple.svg)](https://rasa.com/)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
