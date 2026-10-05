@@ -63,10 +63,12 @@ rasa shell
 .
 ├── actions/
 │   └── actions.py        # Logika custom action (Python)
+
 ├── data/
 │   ├── nlu.yml           # Data latihan intent & entity
 │   ├── rules.yml         # Aturan percakapan tetap
 │   └── stories.yml       # Alur dialog percakapan (training stories)
+
 ├── config.yml            # Konfigurasi NLU pipeline & policy
 ├── domain.yml            # Definisi intent, entities, slots, & responses
 ├── credentials.yml       # Konfigurasi channel / integrasi
