@@ -1,66 +1,99 @@
+```markdown
 # Rasa Guitar Chatbot (v3.5.0)
 
 [![Rasa Open Source](https://img.shields.io/badge/Rasa-3.5.0-purple.svg)](https://rasa.com/)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Saya mencoba Rasa 3.5.0 membuat bot simple untuk bertanya tentang chord gitar
-Bot interaktif berbasis teks yang dibangun menggunakan framework **Rasa Open Source (v3.5.0)** untuk menangani pemrosesan bahasa alami (NLU) dan manajemen dialog secara lokal.
+I am experimenting with Rasa 3.5.0 to build a simple bot for asking about guitar chords. This is an interactive text-based chatbot built using the **Rasa Open Source (v3.5.0)** framework to handle Natural Language Understanding (NLU) and dialogue management locally.
 
 ---
 
-## 📌 Fitur Utama
+## 📌 Key Features
 
-- **Intent Recognition & Entity Extraction**: Mampu memahami maksud pesan pengguna dan mengambil variabel data penting.
-- **Custom Actions**: Logika kustom dan integrasi eksternal berbasis Python SDK (`rasa-sdk`). digunakan untuk mengambil chord ascii
-- **Local Deployment**: Berjalan sepenuhnya di lingkungan lokal tanpa tergantung pada API luar berbayar.
+- **Intent Recognition & Entity Extraction**: Capable of understanding user intents and extracting important data variables.
+- **Custom Actions**: Custom business logic and external integrations powered by the Python SDK (`rasa-sdk`), specifically used to fetch and display ASCII guitar chords.
+- **Local Deployment**: Runs completely in a local environment without relying on paid external APIs.
 
 ---
 
-## 🛠️ Teknologi & Prasyarat
+## 🛠️ Tech Stack & Prerequisites
 
-- **Python**: v3.8 atau v3.9 *(disarankan memakai Virtual Environment)*
+- **Python**: v3.8 or v3.9 *(Virtual Environment strongly recommended)*
 - **Rasa Open Source**: v3.5.0
 - **Rasa SDK**: v3.5.x
 
 ---
 
-## ⚙️ Cara Instalasi & Penggunaan
+## ⚙️ Installation & Setup
 
-### 1. Clone Repositori
+### 1. Clone the Repository
+```bash
 git clone [https://github.com/username/nama-repo-bot.git](https://github.com/username/nama-repo-bot.git)
 cd nama-repo-bot
 
-### 2. Buat & Aktifkan Virtual Environment
+```
+
+### 2. Create & Activate Virtual Environment
+
+```bash
 python -m venv venv
 
-# Mengaktifkan di Windows:
+# Activate on Windows:
 .\venv\Scripts\activate
 
-# Mengaktifkan di Linux / macOS:
+# Activate on Linux / macOS:
 source venv/bin/activate
 
-### 3. Instal Dependensi
-pip install --upgrade pip
-pip install rasa==3.5.0
+```
 
-### 4. Pelatihan Model (Training)
+### 3. Install Dependencies
+
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+
+```
+
+### 4. Train the Model
+
+```bash
 rasa train
 
-### 5. Jalankan Chatbot
-# Terminal 1:
+```
+
+### 5. Run the Chatbot
+
+Open two separate terminal windows:
+
+**Terminal 1 (Action Server):**
+
+```bash
 rasa run actions
 
-# Terminal 2:
+```
+
+**Terminal 2 (Interactive Shell / API):**
+
+```bash
+# To run in the terminal:
 rasa shell
+
+# OR, to connect with the FrontendBot (HTML/CSS UI), run this instead:
+rasa run -cors * --enable-api -p 10000
+
+```
+
+*(If using the Frontend UI, simply open `FrontendBot/index.html` via a local server extension like VS Code Live Server).*
 
 ---
 
 ## 📊 Model Evaluation
+
 ![DIETClassifier Confusion Matrix](results/DIETClassifier_confusion_matrix.png)
 
+## 📂 Project Structure
 
-## 📂 Struktur Folder Proyek
-
+```text
 Rasa-Bot/
 ├── actions/
 │   └── actions.py              # Custom action logic (Python)
@@ -82,10 +115,16 @@ Rasa-Bot/
 ├── Procfile                    # Deployment configuration (Experimental)
 └── README.md                   # Project documentation
 
-Catatan Penting: File konfigurasi seperti Dockerfile di repositori ini disediakan sebagai persiapan deployment opsional dan saat ini masih dalam tahap eksperimen (belum diuji penuh).
+```
+
+> **Important Note:** Configuration files such as `Dockerfile` and `Procfile` in this repository are provided as optional deployment preparations and are currently in the experimental stage (untested).
 
 ---
 
-## 📜 Lisensi
+## 📜 License
 
-Proyek ini dibangun menggunakan Rasa Open Source v3.5.0 yang dilesensikan di bawah Apache License 2.0.
+This project is built using Rasa Open Source v3.5.0 and is licensed under the [Apache License 2.0](https://opensource.org/licenses/Apache-2.0).
+
+```
+
+```
